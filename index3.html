@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <link rel="stylesheet" href="">
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="name">
+    <p>{{name}}</p>
+    <button v-on:click="counter++">Increase</button>
+    <button v-on:click="counter--">Decrease</button>
+    <button v-on:click="secondcounter++">2ndcounter</button>
+    <p>Counter:{{counter}} {{secondcounter}}</p>
+    <p>Result:{{result}} {{output}}</p>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'DeadPool',
+            counter: 0,
+            secondcounter: 0
+    },
+        computed:  {
+            output: function() {
+                return this.counter > 5 ? 'greater 5' : 'smaller 5';
+            }
+        },
+        watch: {
+            counter: function(value) {
+                var vm = this;
+                setTimeout(function () {
+                    vm.counter = 0;
+                }, 2000);
+            }
+
+        };
+        methods: {
+            result: {
+                return this.counter > 5 ? 'greater 5' : 'smaller 5';
+            }
+        }
+    });
+</script>
+</body>
+</html>
